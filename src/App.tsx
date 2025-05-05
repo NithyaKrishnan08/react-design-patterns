@@ -1,24 +1,27 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import SplitScreen from "./components/SplitScreen";
-import Sidebar from "./components/Sidebar";
-import Content from "./components/Content";
+import SimpleGamesInfo from "./components/GamesInfo";
+import MoviesInfo from "./components/MoviesInfo";
+import RenderList from "./components/RenderList";
+import { games, movies } from "./data/data";
 
 const App = () => {
   return (
-    <div className="flex flex-col h-screen">
-      {/* Header */}
-      <Header />
+    <>
+      <RenderList
+        data={games}
+        resourceName="games"
+        dataToRender={SimpleGamesInfo}
+      />
 
-      {/* Main Content Layout */}
-      <SplitScreen leftWeight={3} rightWeight={60}>
-        <Sidebar />
-        <Content />
-      </SplitScreen>
+      <hr />
+      <br />
+      <br />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+      <RenderList
+        data={movies}
+        resourceName="movies"
+        dataToRender={MoviesInfo}
+      />
+    </>
   );
 };
 
