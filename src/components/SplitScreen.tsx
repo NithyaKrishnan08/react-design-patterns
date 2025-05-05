@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Left from "./Left";
 
 interface SplitScreenProps {
   children: [ReactNode, ReactNode];
@@ -7,22 +6,24 @@ interface SplitScreenProps {
   rightWeight: number;
 }
 
-const SplitScreen = ({ 
-  children, 
-  leftWeight, 
-  rightWeight 
+const SplitScreen = ({
+  children,
+  leftWeight = 1,
+  rightWeight = 1,
 }: SplitScreenProps) => {
   const [left, right] = children;
-  console.log("-----------left", left);
-  console.log("-----------right", right);
 
-  const leftwidth = `${leftWeight}rem`;
+  const leftWidth = `${leftWeight}rem`;
   const rightWidth = `${rightWeight}rem`;
 
   return (
-    <section className="flex w-screen">
-      <div style={{width: leftwidth}}>{left}</div>
-      <div style={{width: rightWidth}}>{right}</div>
+    <section className="flex flex-1">
+      <div style={{ width: leftWidth }} className="p-4">
+        {left}
+      </div>
+      <div style={{ width: rightWidth }} className="p-4">
+        {right}
+      </div>
     </section>
   );
 };

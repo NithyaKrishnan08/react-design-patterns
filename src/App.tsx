@@ -1,14 +1,25 @@
-import Left from "./components/Left"
-import Right from "./components/Right"
-import SplitScreen from "./components/SplitScreen"
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SplitScreen from "./components/SplitScreen";
+import Sidebar from "./components/Sidebar";
+import Content from "./components/Content";
 
-function App() {
+const App = () => {
   return (
-    <SplitScreen leftWeight={15} rightWeight={80}>
-      <Left />
-      <Right />
-    </SplitScreen>
-  )
-}
+    <div className="flex flex-col h-screen">
+      {/* Header */}
+      <Header />
 
-export default App
+      {/* Main Content Layout */}
+      <SplitScreen leftWeight={3} rightWeight={60}>
+        <Sidebar />
+        <Content />
+      </SplitScreen>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
